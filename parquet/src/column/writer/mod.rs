@@ -1076,7 +1076,6 @@ impl<'a, E: ColumnValueEncoder> GenericColumnWriter<'a, E> {
                 if let Some(ref mut cmpr) = self.compressor {
                     let mut compressed_buf = Vec::with_capacity(uncompressed_size);
                     cmpr.compress(&buffer[..], &mut compressed_buf)?;
-                    compressed_buf.shrink_to_fit();
                     buffer = compressed_buf;
                 }
 
